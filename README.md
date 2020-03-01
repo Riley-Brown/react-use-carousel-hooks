@@ -2,6 +2,10 @@
 
 ### Super simple/basic hook and APIs for creating and controlling any type of carousel
 
+# Code sandbox demo
+
+https://codesandbox.io/s/unruffled-sun-td66r
+
 ## Basic usage
 
 ```JSX
