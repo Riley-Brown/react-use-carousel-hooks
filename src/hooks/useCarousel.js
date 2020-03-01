@@ -22,13 +22,7 @@ export default function useCarousel({ dataArray, interval } = {}) {
     }
   };
 
-  const next = () => {
-    if (index >= dataArray.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex(index => index + 1);
-    }
-  };
+  const next = () => increment();
 
   const previous = () => {
     if (index === 0) {
