@@ -16,20 +16,21 @@ import doggo from "./img/doggo1.jpg";
 import doggo2 from "./img/doggo2.jpg";
 import doggo3 from "./img/doggo3.jpg";
 
-export default function App() {
-  const imgs = [doggo, doggo2, doggo3];
+const data = [doggo, doggo2, doggo3];
 
-  const { index, next, previous, pause, resume, paused } = useCarousel({
-    dataArray: imgs,
-    interval: 3000
+export default function App() {
+  const { index, next, previous, pause, resume, isPaused } = useCarousel({
+    dataArray: data,
+    interval: 3000,
+    allowArrowKeysNavigation: true
   });
 
   return (
     <div className="carousel-container">
-      <img src={imgs[index]} alt="Good doggy" />
+      <img src={data[index]} alt="Good doggy" />
       <div className="carousel-controls">
         <button onClick={previous}>Previous</button>
-        {paused ? (
+        {isPaused ? (
           <button onClick={resume}>Play</button>
         ) : (
           <button onClick={pause}>Pause</button>
@@ -47,11 +48,11 @@ Arguments passed to useCarousel() invocation
 
 ### `dataArray`
 
-Array of items to display in carousel
+Array of items used to increment and decrement carousel index
 
 Ex: `const data = [imgOne, imgTwo, imgThree]`
 
-- Type: `Array` of `Any`
+- Type: `[]` of `Any`
 - Required: `true`
 - Default: `undefined`
 
@@ -61,15 +62,23 @@ Ex: `const data = [imgOne, imgTwo, imgThree]`
 
 Time in milliseconds to increment carousel index
 
-- Type: `Number`
+- Type: `number`
 - Required: `true`
+- Default: `undefined`
+
+### `allowArrowKeysNavigation`
+
+Boolean to allow navigation the carousel using keyboard arrow keys
+
+- Type: `boolean`
+- Required: `false`
 - Default: `undefined`
 
 <hr>
 
 # Returned Values
 
-Values returned by the `useSpeechToText()` invocation
+Values returned by the `useCarousel` invocation
 
 Ex:
 
@@ -81,7 +90,7 @@ const { index, next, previous } = useCarousel({ dataArray, interval });
 
 Current index of the carousel
 
-- Type: `Number`
+- Type: `number`
 - Default: `0`
 
 <hr>
@@ -90,7 +99,7 @@ Current index of the carousel
 
 Function to manually increment carousel index
 
-- Type: `Func`
+- Type: `() => void`
 
 <hr>
 
@@ -98,7 +107,7 @@ Function to manually increment carousel index
 
 Function to manually decrement carousel index
 
-- Type: `Func`
+- Type: `() => void`
 
 <hr>
 
@@ -106,15 +115,15 @@ Function to manually decrement carousel index
 
 Function to pause carousel interval increment
 
-- Type: `Func`
+- Type: `() => void`
 
 <hr>
 
-### `paused`
+### `isPaused`
 
 Boolean of the current paused state of the carousel
 
-- Type: `Boolean`
+- Type: `boolean`
 - Default: `false`
 
 <hr>
@@ -123,6 +132,6 @@ Boolean of the current paused state of the carousel
 
 Function to manually resume carousel index interval
 
-- Type: `Func`
+- Type: `() => void`
 
 <hr>
