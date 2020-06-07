@@ -44,7 +44,7 @@ export default function App() {
 
 # Arguments
 
-Arguments passed to useCarousel() invocation
+Arguments passed to `useCarousel` invocation
 
 ### `dataArray`
 
@@ -52,7 +52,7 @@ Array of items used to increment and decrement carousel index
 
 Ex: `const data = [imgOne, imgTwo, imgThree]`
 
-- Type: `[]` of `Any`
+- Type: `any[]`
 - Required: `true`
 - Default: `undefined`
 
