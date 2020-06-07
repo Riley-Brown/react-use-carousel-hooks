@@ -1,21 +1,22 @@
-import React from "react";
-import useCarousel from "./hooks/useCarousel";
+import React from 'react';
+import useCarousel from './hooks/useCarousel';
 
-import doggo from "./img/doggo1.jpg";
-import doggo2 from "./img/doggo2.jpg";
-import doggo3 from "./img/doggo3.jpg";
+import doggo from './img/doggo1.jpg';
+import doggo2 from './img/doggo2.jpg';
+import doggo3 from './img/doggo3.jpg';
 
-import previousSvg from "./svg/previous.svg";
-import nextSvg from "./svg/next.svg";
-import playSvg from "./svg/play.svg";
-import pauseSvg from "./svg/pause.svg";
+import previousSvg from './svg/previous.svg';
+import nextSvg from './svg/next.svg';
+import playSvg from './svg/play.svg';
+import pauseSvg from './svg/pause.svg';
 
 function App() {
   const imgs = [doggo, doggo2, doggo3];
 
-  const { index, next, previous, pause, resume, paused } = useCarousel({
+  const { index, next, previous, pause, resume, isPaused } = useCarousel({
     dataArray: imgs,
-    interval: 3000
+    interval: 3000,
+    allowArrowKeysNavigation: true
   });
 
   return (
@@ -25,7 +26,7 @@ function App() {
         <button onClick={previous} aria-label="Previous">
           <img src={previousSvg} alt="Previous" />
         </button>
-        {paused ? (
+        {isPaused ? (
           <button onClick={resume} aria-label="Play">
             <img src={playSvg} alt="Play" />
           </button>
